@@ -1,0 +1,11 @@
+# render.yaml
+
+services:
+  - name: web
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    env:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 16.17.0 # Вказати бажану версію Node.js
