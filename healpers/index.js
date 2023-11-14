@@ -1,5 +1,5 @@
 const { HttpError } = require("./HttpError");
-const { CtrlWrapper } = require("./ctrlWrapper");
+const { CtrlWrapper } = require("./CtrlWrapper");
 
 module.exports = {
   HttpError,
