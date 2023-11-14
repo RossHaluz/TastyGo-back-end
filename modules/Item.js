@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
 const itemSchema = new Schema({
-  img: {
+  image: {
     type: String,
     require: true,
   },
@@ -10,12 +10,15 @@ const itemSchema = new Schema({
     type: String,
     require: true,
   },
-  weigth: {
+  optiosIngredient: {
+    type: [Object],
+  },
+  weight: {
     type: String,
     require: true,
   },
   ingredients: {
-    type: [Object],
+    type: String,
     require: true,
   },
   allergens: {
@@ -44,14 +47,9 @@ const itemSchema = new Schema({
 const ItemModel = model("item", itemSchema);
 
 const ItemValidate = Joi.object({
-  img: Joi.string().required(),
   nameItem: Joi.string().required(),
   weigth: Joi.string().required(),
-  ingredients: Joi.array().items(
-    Joi.object({
-      option: Joi.string(),
-    })
-  ),
+  ingredients: Joi.string().required(),
   allergens: Joi.array().items(Joi.string()),
   price: Joi.string().required(),
   characteristics: Joi.array().items(

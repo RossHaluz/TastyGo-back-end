@@ -31,6 +31,7 @@ const getCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
   const { categoryId } = req.params;
   const { title } = req.body;
+  const categories = await CategoryModel.find();
   const updateCategory = await CategoryModel.findByIdAndUpdate(
     categoryId,
     { title: title },
@@ -40,12 +41,26 @@ const updateCategory = async (req, res) => {
     throw HttpError(404, "Category not found");
   }
 
-  res.json(updateCategory);
+  res.json({
+    updateCategory,
+    categories,
+  });
 };
+
+const deleteCategory = async (req, res) => {
+  const { categoryId } = req.params;
+  const deleteCategory = await CategoryModel.findByIdAndDelete(categoryId);
+  if (!deleteCategory) {
+    throw HttpError(404, 'Category not found');
+  }
+
+  res.json(deleteCategory);
+}
 
 module.exports = {
   createCategory: CtrlWrapper(createCategory),
   getAllCategories: CtrlWrapper(getAllCategories),
   getCategory: CtrlWrapper(getCategory),
   updateCategory: CtrlWrapper(updateCategory),
+  deleteCategory: CtrlWrapper(deleteCategory),
 };

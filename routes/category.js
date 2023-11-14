@@ -3,6 +3,7 @@ const {
   getAllCategories,
   getCategory,
   updateCategory,
+  deleteCategory,
 } = require("../controllers/category");
 const { validateBody } = require("../middlewars");
 const { categoryValidate } = require("../modules/Category");
@@ -21,5 +22,8 @@ route.get("/get-category/:categoryId", getCategory);
 
 //Update category
 route.put("/update-category/:categoryId", updateCategory);
+
+//Delete category
+route.delete('/delete-category/:categoryId', deleteCategory);
 
 module.exports = route;
