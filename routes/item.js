@@ -3,6 +3,7 @@ const {
   getAllItems,
   getItemDetails,
   deleteItem,
+  updateItem,
 } = require("../controllers/item");
 const { validateBody, upload } = require("../middlewars");
 const { ItemValidate } = require("../modules/Item");
@@ -17,7 +18,10 @@ route.get("/get-items", getAllItems);
 //Get item details
 route.get("/get-item/:itemId", getItemDetails);
 
-//Delete item 
-route.delete('/delete-item/:itemId', deleteItem);
+//Delete item
+route.delete("/delete-item/:itemId", deleteItem);
+
+//Update item
+route.put("/update-item/:itemId", upload.single("image"), updateItem);
 
 module.exports = route;

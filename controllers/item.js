@@ -45,9 +45,33 @@ const deleteItem = async (req, res) => {
   res.json(deleteItem);
 };
 
+const updateItem = async (req, res) => {
+  const { itemId } = req.params;
+  if (req.file) {
+    const { path } = req.file;
+    const updateItemWithImg = await ItemModel.findByIdAndUpdate(
+      itemId,
+      {
+        ...req.body,
+        image: path,
+      },
+      { new: true }
+    );
+
+    res.json(updateItemWithImg);
+  }
+  const updateItem = await ItemModel.findByIdAndUpdate(
+    itemId,
+    { ...req.body },
+    { new: true }
+  );
+  res.json(updateItem);
+};
+
 module.exports = {
   createItem: CtrlWrapper(createItem),
   getAllItems: CtrlWrapper(getAllItems),
   getItemDetails: CtrlWrapper(getItemDetails),
   deleteItem: CtrlWrapper(deleteItem),
+  updateItem: CtrlWrapper(updateItem),
 };
