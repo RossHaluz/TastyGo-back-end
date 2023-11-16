@@ -26,6 +26,6 @@ route.delete("/delete-item/:itemId", deleteItem);
 route.put("/update-item/:itemId", upload.single("image"), updateItem);
 
 //Get category items
-route.get("/category-items/:nameCategory", getCategoryItems);
+route.get("/category-items/:categoryName", getCategoryItems);
 
 module.exports = route;

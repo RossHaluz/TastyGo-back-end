@@ -69,8 +69,8 @@ const updateItem = async (req, res) => {
 };
 
 const getCategoryItems = async (req, res) => {
-  const { nameCategory } = req.params;
-  const categoryItems = await ItemModel.find({ category: nameCategory.trim() });
+  const { categoryName } = req.params;
+  const categoryItems = await ItemModel.find({ category: categoryName });
   if (!categoryItems) {
     throw HttpError(404, "Items not found");
   }

@@ -2,7 +2,8 @@ const { HttpError, CtrlWrapper } = require("../healpers");
 const { CategoryModel } = require("../modules/Category");
 
 const createCategory = async (req, res) => {
-  const newCategory = await CategoryModel.create({ ...req.body });
+  const { title } = req.body;
+  const newCategory = await CategoryModel.create({ title: title.trim() });
 
   res.json(newCategory);
 };
@@ -57,12 +58,10 @@ const deleteCategory = async (req, res) => {
   res.json(deleteCategory);
 };
 
-
 module.exports = {
   createCategory: CtrlWrapper(createCategory),
   getAllCategories: CtrlWrapper(getAllCategories),
   getCategory: CtrlWrapper(getCategory),
   updateCategory: CtrlWrapper(updateCategory),
   deleteCategory: CtrlWrapper(deleteCategory),
-
 };
