@@ -4,6 +4,7 @@ const {
   getItemDetails,
   deleteItem,
   updateItem,
+  getCategoryItems,
 } = require("../controllers/item");
 const { validateBody, upload } = require("../middlewars");
 const { ItemValidate } = require("../modules/Item");
@@ -23,5 +24,8 @@ route.delete("/delete-item/:itemId", deleteItem);
 
 //Update item
 route.put("/update-item/:itemId", upload.single("image"), updateItem);
+
+//Get category items
+route.get("/category-items/:nameCategory", getCategoryItems);
 
 module.exports = route;

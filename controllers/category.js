@@ -51,11 +51,12 @@ const deleteCategory = async (req, res) => {
   const { categoryId } = req.params;
   const deleteCategory = await CategoryModel.findByIdAndDelete(categoryId);
   if (!deleteCategory) {
-    throw HttpError(404, 'Category not found');
+    throw HttpError(404, "Category not found");
   }
 
   res.json(deleteCategory);
-}
+};
+
 
 module.exports = {
   createCategory: CtrlWrapper(createCategory),
@@ -63,4 +64,5 @@ module.exports = {
   getCategory: CtrlWrapper(getCategory),
   updateCategory: CtrlWrapper(updateCategory),
   deleteCategory: CtrlWrapper(deleteCategory),
+
 };

@@ -68,10 +68,21 @@ const updateItem = async (req, res) => {
   res.json(updateItem);
 };
 
+const getCategoryItems = async (req, res) => {
+  const { nameCategory } = req.params;
+  const categoryItems = await ItemModel.find({ category: nameCategory.trim() });
+  if (!categoryItems) {
+    throw HttpError(404, "Items not found");
+  }
+
+  res.json(categoryItems);
+};
+
 module.exports = {
   createItem: CtrlWrapper(createItem),
   getAllItems: CtrlWrapper(getAllItems),
   getItemDetails: CtrlWrapper(getItemDetails),
   deleteItem: CtrlWrapper(deleteItem),
   updateItem: CtrlWrapper(updateItem),
+  getCategoryItems: CtrlWrapper(getCategoryItems),
 };
