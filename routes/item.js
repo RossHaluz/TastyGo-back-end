@@ -6,7 +6,7 @@ const {
   updateItem,
   getCategoryItems,
 } = require("../controllers/item");
-const { validateBody, upload } = require("../middlewars");
+const { upload } = require("../middlewars");
 const { ItemValidate } = require("../modules/Item");
 const route = require("express").Router();
 
