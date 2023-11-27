@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use("/api/item", itemRoute);
 app.use("/api/category", categoryRoute);
-app.use("/use/user", authRoute);
+app.use("/api/user", authRoute);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found..." });
