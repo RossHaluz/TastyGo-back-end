@@ -20,6 +20,23 @@ const registerUser = async (req, res) => {
   res.json(registerUser);
 };
 
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await UserModel.findOne({ email });
+  if (!user) {
+    throw HttpError(404, "User not found");
+  }
+
+  const comparePassword = bcrypt.compare(password, user.password);
+
+  if (!comparePassword) {
+    throw HttpError(400, "Password or email not correct");
+  }
+
+  res.json(user);
+};
+
 module.exports = {
   registerUser: CtrlWrapper(registerUser),
+  loginUser: CtrlWrapper(loginUser),
 };
