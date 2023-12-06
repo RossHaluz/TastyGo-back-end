@@ -6,12 +6,12 @@ const {
   updateItem,
   getCategoryItems,
 } = require("../controllers/item");
-const { upload } = require("../middlewars");
+const { uploadImage } = require("../middlewars");
 const { ItemValidate } = require("../modules/Item");
 const route = require("express").Router();
 
 //Create new item
-route.post("/create-item", upload.single("image"), createItem);
+route.post("/create-item", uploadImage.single("image"), createItem);
 
 //Get all items
 route.get("/get-items", getAllItems);
@@ -23,7 +23,7 @@ route.get("/get-item/:itemId", getItemDetails);
 route.delete("/delete-item/:itemId", deleteItem);
 
 //Update item
-route.put("/update-item/:itemId", upload.single("image"), updateItem);
+route.put("/update-item/:itemId", uploadImage.single("image"), updateItem);
 
 //Get category items
 route.get("/category-items/:categoryName", getCategoryItems);

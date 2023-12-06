@@ -1,7 +1,7 @@
-const { upload } = require("./upload");
 const { validateBody } = require("./validateBody");
+const { uploadImage } = require("./upload");
 
 module.exports = {
   validateBody,
-  upload,
+  uploadImage,
 };

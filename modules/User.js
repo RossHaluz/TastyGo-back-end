@@ -2,13 +2,18 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
 const userSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     require: true,
   },
+  lastName: {
+    type: String,
+  },
+  DateOfBirth: {
+    type: Date,
+  },
   number: {
     type: String,
-    require: true,
   },
   email: {
     type: String,
@@ -19,6 +24,17 @@ const userSchema = new Schema({
     type: String,
     require: true,
     min: 3,
+  },
+  image: {
+    type: String,
+  },
+  orders: {
+    type: [Schema.Types.ObjectId],
+    ref: "Order",
+  },
+  reviews: {
+    type: [Schema.Types.ObjectId],
+    ref: "Review",
   },
 });
 

@@ -8,6 +8,7 @@ const app = express();
 const itemRoute = require("./routes/item");
 const categoryRoute = require("./routes/category");
 const authRoute = require("./routes/auth");
+const reviewRoute = require("./routes/review");
 
 app.use(express.json());
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/api/item", itemRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/user", authRoute);
+app.use("/api/review", reviewRoute);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found..." });
