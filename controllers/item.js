@@ -71,7 +71,7 @@ const getItemDetails = async (req, res) => {
       // Отримання інформації про айтеми з Recently Viewed
       const recentlyViewedItems = await Promise.all(
         recentlyViewed.items.map((item) => {
-          return ItemModel.findOne({ _id: itemюitemId });
+          return ItemModel.findOne({ _id: item.itemId });
         })
       );
 
