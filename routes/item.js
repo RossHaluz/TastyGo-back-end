@@ -5,6 +5,7 @@ const {
   deleteItem,
   updateItem,
   getCategoryItems,
+  getRecentlyViewed,
 } = require("../controllers/item");
 const { uploadImage } = require("../middlewars");
 const { ItemValidate } = require("../modules/Item");
@@ -27,5 +28,8 @@ route.put("/update-item/:itemId", uploadImage.single("image"), updateItem);
 
 //Get category items
 route.get("/category-items/:categoryName", getCategoryItems);
+
+//Get Recently Viewed Items
+route.get("/recently-viewed", getRecentlyViewed);
 
 module.exports = route;
