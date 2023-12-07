@@ -77,6 +77,8 @@ const getItemDetails = async (req, res) => {
       // Додавання інформації про Recently Viewed до відповіді
       return res.json({ item, recentlyViewedItems });
     }
+
+    res.json(item);
   }
 };
 
