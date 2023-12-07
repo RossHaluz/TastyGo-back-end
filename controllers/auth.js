@@ -86,12 +86,9 @@ const updateUser = async (req, res) => {
 
 const loginWithGoogle = async (req, res) => {
   const { email, name, picture, sub } = req.body;
-  console.log(req.body);
   const user = await UserModel.findOne({ email });
-  console.log(user);
 
   if (!user) {
-    console.log("33333333");
     const createUser = await UserModel.create({
       email,
       name,
