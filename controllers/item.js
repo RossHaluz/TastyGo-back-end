@@ -70,17 +70,14 @@ const getItemDetails = async (req, res) => {
 
       // Отримання інформації про айтеми з Recently Viewed
       const recentlyViewedItems = await Promise.all(
-        recentlyViewed.items.map((item) => {
-          return ItemModel.findOne({ _id: item.itemId });
+        recentlyViewed.items?.map(async (item) => {
+          return await ItemModel.findOne({ _id: item.itemId });
         })
       );
-
       // Додавання інформації про Recently Viewed до відповіді
       return res.json({ item, recentlyViewedItems });
     }
   }
-
-  res.json(item);
 };
 
 const deleteItem = async (req, res) => {
